@@ -1,74 +1,86 @@
 # Term Deposit Subscription Prediction (Bank Marketing ML)
 
-## 📖 Project Overview
-Banks often run marketing campaigns to offer customers investment products like term deposits.  
-However, calling every customer is expensive and inefficient because most customers say **no**.
-
-This project uses **machine learning** to predict which customers are more likely to subscribe to a term deposit, so banks can focus on the **right customers first**.
+## Project Title
+Predicting whether a bank customer will subscribe to a term deposit using marketing and customer data.
 
 ---
 
-## 🎯 Project Goal
-Predict whether a customer will subscribe (**yes/no**) to a term deposit using marketing and customer data.
+## Problem Statement
+Banks run phone marketing campaigns to promote term deposit products, but most customers do not subscribe.  
+Calling every customer is inefficient and costly.
 
----
+**Objective:**  
+Build a machine learning model that predicts whether a customer will subscribe (yes/no) so the bank can prioritize high-probability customers and improve campaign efficiency.
 
-## 📊 Dataset
-- Real-world bank marketing dataset
-- 40,000 customer records
-- Includes:
-  - age, job, education
-  - account balance
-  - loan and housing status
-  - marketing campaign details
+**Dataset:**
+- Bank marketing dataset
+- ~40,000 customer records
+- Demographics, financial status, and campaign information
 - Target variable: `y` (yes / no)
-
-Only **7.24%** of customers subscribed, making this a **highly imbalanced dataset**.
-
----
-
-## ⚙️ What Was Done
-
-### 1. Data Preparation
-- Removed the `duration` column to prevent data leakage
-- Converted categorical data into numerical values
-- Split data into training and testing sets
-- Used SMOTE to balance the dataset
-
-### 2. Modeling
-Trained and compared multiple models:
-- Logistic Regression
-- Decision Tree
-- Random Forest
-
-### 3. Evaluation
-- Used **5-fold cross-validation**
-- Evaluated using:
-  - Accuracy
-  - Recall
-  - F1-score
-  - ROC-AUC
-  - Confusion Matrix
+- Highly imbalanced (≈7% positive class)
 
 ---
 
-## ✅ Results
-- Achieved **94.6% average accuracy** using 5-fold cross-validation  
-- Exceeded the required **81% accuracy** threshold
-- Identified key features influencing customer decisions, such as:
-  - age
-  - job type
-  - balance
-  - loan and housing status
+## Approach & Methodology
 
-> Note: Due to class imbalance, accuracy alone does not fully reflect performance on customers who said “yes”.
+### Data Preparation
+- Removed `duration` to prevent data leakage
+- Encoded categorical variables using one-hot encoding
+- Performed stratified train/test split
+- Addressed class imbalance using SMOTE
+
+### Modeling
+- Logistic Regression  
+- Decision Tree  
+- Random Forest  
+
+### Evaluation
+- 5-fold cross-validation
+- Accuracy (primary metric)
+- Recall, F1-score, ROC-AUC
+- Confusion matrix
 
 ---
 
-## 💡 Key Insights
-- Not all customers should be contacted
-- Certain customer groups are more likely to subscribe
-- Data-driven targeting can reduce wasted calls and improve campaign efficiency
+## Key Results
+
+| Metric | Result |
+|------|------|
+| Cross-validated Accuracy | **94.6%** |
+| Evaluation Method | 5-fold Cross-Validation |
+| Class Imbalance | ~7% “Yes” |
+
+> Note: Due to class imbalance, accuracy alone does not fully capture performance on customers who actually subscribe. Recall and F1-score were also analyzed.
+
+---
+
+## Key Insights
+- Most customers do not subscribe; targeting is critical
+- Subscription likelihood is influenced by:
+  - Age
+  - Job type
+  - Account balance
+  - Loan and housing status
+- The model supports customer prioritization rather than blanket calling
+
+---
+
+## Technologies Used
+- Python
+- pandas, NumPy
+- scikit-learn
+- imbalanced-learn
+- matplotlib, seaborn
+
+---
+
+## How to Run
+
+```bash
+git clone https://github.com/your-username/term-deposit-subscription-prediction.git
+cd term-deposit-subscription-prediction
+pip install -r requirements.txt
+jupyter notebook Term_Deposit_Prediction.ipynb
 
 ---
 
